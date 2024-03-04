@@ -1,0 +1,43 @@
+<div class="container">
+
+  <div>
+    <mat-form-field>
+      <mat-label>SIREN</mat-label>
+      <input matInput type="text" [formControl]="siren">
+      <mat-hint>{{!siren.value ? 'valeur par défaut "732829320"' : ''}}</mat-hint>
+    </mat-form-field>
+
+    <button mat-stroked-button color="primary"
+            (click)="generateSiren()"
+            [disabled]="siren.value && (siren.value.length !== 8)">
+      Générer SIREN
+    </button>
+    <button mat-flat-button color="primary" (click)="checkSiren()">
+      Vérifier SIREN
+    </button>
+  </div>
+
+  <div>
+    Format accepté
+    <ul>
+      <li>123 456 789</li>
+      <li>1234 5678</li>
+      <li>123 456 789 RCS</li>
+      <li>123 456 789 RM 123</li>
+    </ul>
+
+    <mat-list>
+      <div mat-subheader>Validation List</div>
+      @for (item of sirenList; track item.siren) {
+        <mat-list-item>
+          @if(item.isValid) {
+            <mat-icon class="valid" matListItemIcon>check_circle</mat-icon>
+          } @else {
+            <mat-icon class="invalid" matListItemIcon>cancel</mat-icon>
+          }
+          <div matListItemTitle>{{item.siren}}</div>
+        </mat-list-item>
+      }
+    </mat-list>
+  </div>
+</div>

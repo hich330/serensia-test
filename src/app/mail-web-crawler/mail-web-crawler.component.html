@@ -1,0 +1,68 @@
+<div class="container">
+
+  <div  class="mocks">
+    <h2>Fichiers Mocks</h2>
+    <button
+      mat-stroked-button color="accent"
+      (click)="url.setValue('file:///C:/TestHtml/index.html')"
+    >
+      file:///C:/TestHtml/index.html
+    </button>
+    <button
+      mat-stroked-button color="accent"
+      (click)="url.setValue('file:///C:/TestHtml/child1.html')"
+    >
+      file:///C:/TestHtml/child1.html
+    </button>
+    <button
+      mat-stroked-button color="accent"
+      (click)="url.setValue('file:///C:/TestHtml/child2.html')"
+    >
+      file:///C:/TestHtml/child2.html
+    </button>
+  </div>
+
+  <div class="header">
+    <mat-form-field>
+      <mat-label>URL</mat-label>
+      <input matInput type="text" [formControl]="url" required>
+      @if(url.hasError('required')) {
+        <mat-error>{{'URL is Required'}}</mat-error>
+      }
+    </mat-form-field>
+
+    <button
+      mat-flat-button color="primary"
+      (click)="extractEmails()"
+      [disabled]="!url.value || depth.value !== null && depth.value < -1">
+      Extraire Emails
+    </button>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>profondeur</mat-label>
+      <input matInput type="number" [formControl]="depth">
+      @if(depth.value === null) {
+        <mat-hint>{{'Profondeur par défaut utilisée (-1)'}}</mat-hint>
+      } @else if(depth.value < -1) {
+        <mat-hint>{{'Profondeur minimum -1'}}</mat-hint>
+      }
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-list>
+      <div mat-subheader>emails List</div>
+      @for (item of emails; track item) {
+        <mat-list-item>
+          <mat-icon class="valid" matListItemIcon>email</mat-icon>
+          <div matListItemTitle>{{item}}</div>
+        </mat-list-item>
+      }
+    </mat-list>
+  </div>
+
+
+
+</div>

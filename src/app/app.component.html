@@ -1,0 +1,13 @@
+<nav class="mat-elevation-z4">
+  <div class="logo"></div>
+
+  <ul class="menu">
+    <li><a [routerLink]="['/home']" routerLinkActive="active">Home</a></li>
+    <li><a [routerLink]="['/term-suggestion']" routerLinkActive="active">Term Suggestion</a></li>
+    <li><a [routerLink]="['/siren-validity']" routerLinkActive="active">SIREN Validity</a></li>
+    <li><a [routerLink]="['/crawler']" routerLinkActive="active">Crawler</a></li>
+  </ul>
+</nav>
+<div class="app-wrapper">
+  <router-outlet></router-outlet>
+</div>

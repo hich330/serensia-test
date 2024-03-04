@@ -1,0 +1,11 @@
+mat-list {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.valid {
+  --mdc-list-list-item-leading-icon-color: yellowgreen;
+}
+.invalid {
+  --mdc-list-list-item-leading-icon-color: indianred;
+}

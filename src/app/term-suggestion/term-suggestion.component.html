@@ -1,0 +1,47 @@
+<div class="container">
+
+  <div class="config">
+    <mat-form-field class="choice-list">
+      <mat-label>liste des choix</mat-label>
+      <mat-chip-grid #chipGrid>
+        @for (choice of choices; track choice) {
+          <mat-chip-row (removed)="removeChoice(choice)">
+            {{choice}}
+            <button matChipRemove><mat-icon>cancel</mat-icon></button>
+          </mat-chip-row>
+        }
+      </mat-chip-grid>
+      <input placeholder="nouveau choix..."
+             [matChipInputFor]="chipGrid"
+             (matChipInputTokenEnd)="addChoice($event)"/>
+      <mat-hint>{{choices.length <= 0 ? 'si aucun choix n\'est fournie, aucune suggestion ne peux être donnée': ''}}</mat-hint>
+    </mat-form-field>
+  </div>
+
+
+  <div>
+    <mat-form-field>
+      <mat-label>mot recherché</mat-label>
+      <input matInput type="text" [formControl]="term">
+      <mat-hint>{{!term.value ? 'le mot "gros" sera utilisé par défaut': ''}}</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>nombre de suggestions maximum</mat-label>
+      <input matInput type="number" [formControl]="suggestionNumber">
+      <mat-hint>{{(!suggestionNumber.value || suggestionNumber.value < 0) ? 'toutes les suggestions seront retournées': ''}}</mat-hint>
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="getSuggestions()">Rechercher</button>
+  </div>
+
+  <div>
+    <mat-list>
+      <div mat-subheader>Suggestions</div>
+      @for (suggestion of suggestions; track suggestion) {
+        <mat-list-item>
+          <mat-icon matListItemIcon>arrow_right</mat-icon>
+          <div matListItemTitle>{{suggestion}}</div>
+        </mat-list-item>
+      }
+    </mat-list>
+  </div>
+</div>

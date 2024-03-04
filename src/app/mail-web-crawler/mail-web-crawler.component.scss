@@ -1,0 +1,17 @@
+.mocks, .header {
+  grid-column: 1/3;
+}
+
+.mocks {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: transparent;
+  h2 {
+    width: 100%;
+    margin: 0;
+  }
+  button {
+    --mdc-outlined-button-label-text-size: 11px;
+  }
+}

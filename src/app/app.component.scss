@@ -1,0 +1,47 @@
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 45px;
+  gap: 20px;
+  background-color: #FFFFFF;
+
+  .logo {
+    width: 150px;
+    height: 40px;
+    background: url('../assets/img/serensia_logo.jpg') center center no-repeat;
+    background-size: cover;
+  }
+
+  ul.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    li {
+      display: flex;
+      a {
+        white-space: nowrap;
+        cursor: pointer;
+        padding: 10px 15px;
+        border-radius: 8px;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+        &.active {
+          cursor: default;
+          background-color: rgb(57, 103, 169);
+          color: #FFFFFF;
+        }
+      }
+    }
+  }
+}
+
+.app-wrapper {
+  padding: 45px;
+}
